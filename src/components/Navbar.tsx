@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, FileText, Send } from 'lucide-react';
+import { Menu, X, FileText, Send, Github, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
+export const Navbar: React.FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -117,15 +117,75 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         </nav>
 
         {/* Action Buttons */}
-        <div style={{ display: 'none', alignItems: 'center', gap: '0.75rem' }} className="desktop-actions">
-          <button
-            onClick={onOpenResume}
+        <div style={{ display: 'none', alignItems: 'center', gap: '0.65rem' }} className="desktop-actions">
+          <a
+            href={PERSONAL_INFO.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            title="GitHub Profile"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '2.25rem',
+              height: '2.25rem',
+              borderRadius: '8px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              color: '#cbd5e1',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#22d3ee';
+              e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#cbd5e1';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            }}
+          >
+            <Github size={16} />
+          </a>
+          <a
+            href={PERSONAL_INFO.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            title="LinkedIn Profile"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '2.25rem',
+              height: '2.25rem',
+              borderRadius: '8px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              color: '#cbd5e1',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#38bdf8';
+              e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#cbd5e1';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            }}
+          >
+            <Linkedin size={16} />
+          </a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-secondary btn-sm"
             style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem' }}
           >
             <FileText size={15} color="#22d3ee" />
             Resume
-          </button>
+          </a>
           <a href="#contact" className="btn btn-primary btn-sm">
             <Send size={14} />
             Let's Talk
@@ -185,22 +245,46 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             </a>
           ))}
           <div style={{ display: 'flex', gap: '0.75rem', paddingTop: '0.5rem' }}>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenResume();
-              }}
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
               className="btn btn-secondary btn-sm"
-              style={{ flex: 1 }}
+              style={{ flex: 1, justifyContent: 'center', gap: '0.4rem' }}
+            >
+              <Github size={14} />
+              GitHub
+            </a>
+            <a
+              href={PERSONAL_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="btn btn-secondary btn-sm"
+              style={{ flex: 1, justifyContent: 'center', gap: '0.4rem' }}
+            >
+              <Linkedin size={14} color="#38bdf8" />
+              LinkedIn
+            </a>
+          </div>
+          <div style={{ display: 'flex', gap: '0.75rem' }}>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="btn btn-secondary btn-sm"
+              style={{ flex: 1, justifyContent: 'center' }}
             >
               <FileText size={15} color="#22d3ee" />
               Resume
-            </button>
+            </a>
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="btn btn-primary btn-sm"
-              style={{ flex: 1 }}
+              style={{ flex: 1, justifyContent: 'center' }}
             >
               <Send size={14} />
               Contact

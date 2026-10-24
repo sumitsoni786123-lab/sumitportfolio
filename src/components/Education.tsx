@@ -21,7 +21,7 @@ export const Education: React.FC = () => {
         </div>
 
         {/* Education Timeline Card */}
-        <div style={{ maxWidth: '850px' }}>
+        <div style={{ maxWidth: '850px', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
           {EDUCATION_DATA.map((edu, index) => (
             <div
               key={index}
@@ -55,7 +55,7 @@ export const Education: React.FC = () => {
                   </div>
                 </div>
 
-                {/* CGPA Badge */}
+                {/* CGPA / Percentage Badge */}
                 <div
                   style={{
                     background: 'rgba(34, 211, 238, 0.1)',
@@ -66,7 +66,7 @@ export const Education: React.FC = () => {
                   }}
                 >
                   <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
-                    Current CGPA
+                    {edu.cgpa.includes('%') ? 'Percentage' : 'Current CGPA'}
                   </div>
                   <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f8fafc', fontFamily: 'var(--font-mono)' }}>
                     {edu.cgpa}

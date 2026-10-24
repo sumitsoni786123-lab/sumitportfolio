@@ -4,10 +4,10 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 import { LeetCodeIcon } from './LeetCodeIcon';
 
 interface HeroProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
+export const Hero: React.FC<HeroProps> = () => {
   const [activeTab, setActiveTab] = useState<'terrasense' | 'sahayak' | 'urban'>('terrasense');
 
   return (
@@ -103,10 +103,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <ArrowUpRight size={18} />
               </a>
 
-              <button onClick={onOpenResume} className="btn btn-secondary" style={{ fontFamily: 'var(--font-mono)' }}>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                style={{ fontFamily: 'var(--font-mono)' }}
+              >
                 <FileText size={17} color="#22d3ee" />
                 Resume (.pdf)
-              </button>
+              </a>
 
               <a href="#contact" className="btn btn-outline-cyan">
                 <Send size={16} />
@@ -116,7 +122,74 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
             {/* Social & Coding Profile Links */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap', marginBottom: '2.25rem' }}>
-              <span style={{ fontSize: '0.78rem', color: '#64748b', fontFamily: 'var(--font-mono)', marginRight: '0.2rem' }}>PROFILES:</span>
+              <span style={{ fontSize: '0.78rem', color: '#64748b', fontFamily: 'var(--font-mono)', marginRight: '0.2rem' }}>VERIFIED:</span>
+
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="GitHub: sumitsoni786123-lab"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.35rem 0.75rem',
+                  borderRadius: '8px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  color: '#f1f5f9',
+                  fontSize: '0.8rem',
+                  fontFamily: 'var(--font-mono)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                  e.currentTarget.style.borderColor = '#22d3ee';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                }}
+              >
+                <Github size={14} />
+                <span>GitHub (@sumitsoni786123-lab)</span>
+                <ArrowUpRight size={13} />
+              </a>
+
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="LinkedIn: sumitsoni786"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.35rem 0.75rem',
+                  borderRadius: '8px',
+                  background: 'rgba(14, 165, 233, 0.08)',
+                  border: '1px solid rgba(14, 165, 233, 0.25)',
+                  color: '#38bdf8',
+                  fontSize: '0.8rem',
+                  fontFamily: 'var(--font-mono)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(14, 165, 233, 0.16)';
+                  e.currentTarget.style.borderColor = '#38bdf8';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(14, 165, 233, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.25)';
+                }}
+              >
+                <Linkedin size={14} color="#38bdf8" />
+                <span>LinkedIn (@sumitsoni786)</span>
+                <ArrowUpRight size={13} />
+              </a>
+
               <a
                 href={PERSONAL_INFO.leetcode}
                 target="_blank"
@@ -146,73 +219,38 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 }}
               >
                 <LeetCodeIcon size={15} color="#ffa116" />
-                <span>LeetCode</span>
+                <span>LeetCode (@sumitsoni786)</span>
                 <ArrowUpRight size={13} />
               </a>
 
               <a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub Profile"
+                href={`mailto:${PERSONAL_INFO.email}`}
+                title="Direct Email"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.45rem',
                   padding: '0.35rem 0.75rem',
                   borderRadius: '8px',
-                  background: 'rgba(255, 255, 255, 0.04)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: '#cbd5e1',
+                  background: 'rgba(34, 211, 238, 0.06)',
+                  border: '1px solid rgba(34, 211, 238, 0.2)',
+                  color: '#22d3ee',
                   fontSize: '0.8rem',
                   fontFamily: 'var(--font-mono)',
                   textDecoration: 'none',
                   transition: 'all 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+                  e.currentTarget.style.background = 'rgba(34, 211, 238, 0.14)';
+                  e.currentTarget.style.borderColor = '#22d3ee';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.background = 'rgba(34, 211, 238, 0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.2)';
                 }}
               >
-                <Github size={14} />
-                <span>GitHub</span>
-                <ArrowUpRight size={13} />
-              </a>
-
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="LinkedIn Profile"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  padding: '0.35rem 0.75rem',
-                  borderRadius: '8px',
-                  background: 'rgba(14, 165, 233, 0.08)',
-                  border: '1px solid rgba(14, 165, 233, 0.25)',
-                  color: '#38bdf8',
-                  fontSize: '0.8rem',
-                  fontFamily: 'var(--font-mono)',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(14, 165, 233, 0.16)';
-                  e.currentTarget.style.borderColor = '#38bdf8';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(14, 165, 233, 0.08)';
-                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.25)';
-                }}
-              >
-                <Linkedin size={14} />
-                <span>LinkedIn</span>
+                <Send size={13} />
+                <span>{PERSONAL_INFO.email}</span>
                 <ArrowUpRight size={13} />
               </a>
             </div>
@@ -238,10 +276,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               </div>
               <div>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.25rem', fontWeight: 700, color: '#22d3ee' }}>
-                  3 Production
+                  3 Engineered
                 </div>
                 <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  System Architectures
+                  Core Systems
                 </div>
               </div>
               <div>
@@ -398,10 +436,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                       <span>$ start_civic_llm_dispatch --model=gemini-2.5-pro</span>
                     </div>
                     <div style={{ color: '#94a3b8', lineHeight: 1.6, marginBottom: '0.75rem', fontSize: '0.75rem' }}>
-                      &gt; Webhook Ingestion: Evolution API (WhatsApp Gateway)<br />
+                      &gt; Webhook Ingestion: WhatsApp Inbound Gateway<br />
                       &gt; Reasoning Engine: Google Gemini 2.5 Pro Schema Extraction<br />
                       &gt; Anomaly Fusion: Real-time Precipitation & Weather APIs<br />
-                      &gt; State Management: Supabase PostgreSQL Realtime Trigger
+                      &gt; State Management: Supabase Database Realtime Trigger
                     </div>
                     <div
                       style={{
@@ -416,7 +454,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                         Stack Verified:
                       </div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
-                        {['Python Flask', 'Evolution API', 'Gemini 2.5 Pro', 'Supabase', 'Weather API'].map((t) => (
+                        {['Python', 'Google Gemini 2.5 Pro', 'Supabase Database', 'Weather API', 'Civic Automation'].map((t) => (
                           <span key={t} className="tech-chip" style={{ fontSize: '0.7rem', color: '#c084fc', borderColor: 'rgba(168,85,247,0.3)' }}>{t}</span>
                         ))}
                       </div>

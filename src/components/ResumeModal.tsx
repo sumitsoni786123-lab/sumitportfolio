@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { X, Download, FileText, AlertCircle } from 'lucide-react';
-import { PERSONAL_INFO, EDUCATION_DATA } from '../data/portfolioData';
+import { X, Download, FileText, ExternalLink } from 'lucide-react';
+import { PERSONAL_INFO, EDUCATION_DATA, ACHIEVEMENTS_DATA } from '../data/portfolioData';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -62,7 +62,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <FileText size={18} />
             </div>
             <div>
-              <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>
+              <h3 style={{ fontSize: '1.25rem', color: '#f8fafc', fontWeight: 700 }}>
                 Curriculum Vitae / Resume
               </h3>
               <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
@@ -81,6 +81,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               padding: '0.4rem',
               color: '#94a3b8',
               cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <X size={18} />
@@ -89,29 +92,6 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
         {/* Content */}
         <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          {/* Important File Notice */}
-          <div
-            style={{
-              background: 'rgba(34, 211, 238, 0.06)',
-              border: '1px solid rgba(34, 211, 238, 0.3)',
-              borderRadius: '12px',
-              padding: '1.25rem',
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'flex-start',
-            }}
-          >
-            <AlertCircle size={20} color="#22d3ee" style={{ marginTop: '0.15rem', flexShrink: 0 }} />
-            <div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 600, color: '#f1f5f9', marginBottom: '0.25rem' }}>
-                Resume PDF Location Indicator
-              </div>
-              <div style={{ fontSize: '0.825rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                The link points directly to <code style={{ background: 'rgba(0,0,0,0.4)', padding: '0.15rem 0.4rem', borderRadius: '4px', color: '#22d3ee' }}>/resume.pdf</code>. A valid placeholder has been provided. To show your official customized PDF, copy your official document to <strong style={{ color: '#fff' }}>sumitportfolio/public/resume.pdf</strong>.
-              </div>
-            </div>
-          </div>
-
           {/* Resume Snapshot Card */}
           <div
             style={{
@@ -121,29 +101,50 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               padding: '1.5rem',
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
               <div>
-                <h4 style={{ fontSize: '1.2rem', color: '#f8fafc' }}>{PERSONAL_INFO.name}</h4>
-                <div style={{ fontSize: '0.85rem', color: '#22d3ee' }}>{PERSONAL_INFO.email}</div>
+                <h4 style={{ fontSize: '1.25rem', color: '#f8fafc', fontWeight: 700 }}>{PERSONAL_INFO.name}</h4>
+                <div style={{ fontSize: '0.85rem', color: '#22d3ee', fontFamily: 'var(--font-mono)' }}>{PERSONAL_INFO.email}</div>
               </div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#94a3b8' }}>
-                Bhopal, India
+                Bhopal, India &middot; {PERSONAL_INFO.phone}
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', fontSize: '0.85rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem', fontSize: '0.85rem' }}>
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Education</div>
+                <div style={{ color: '#64748b', fontSize: '0.72rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '0.35rem' }}>
+                  Education
+                </div>
                 <div style={{ color: '#e2e8f0', fontWeight: 600 }}>{EDUCATION_DATA[0].degree}</div>
-                <div style={{ color: '#94a3b8' }}>{EDUCATION_DATA[0].institution} ({EDUCATION_DATA[0].duration})</div>
-                <div style={{ color: '#22d3ee', fontWeight: 600 }}>CGPA: {EDUCATION_DATA[0].cgpa}</div>
+                <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>{EDUCATION_DATA[0].institution} ({EDUCATION_DATA[0].duration})</div>
+                <div style={{ color: '#22d3ee', fontWeight: 600, marginTop: '0.2rem' }}>CGPA: {EDUCATION_DATA[0].cgpa}</div>
               </div>
 
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Honors</div>
-                <div style={{ color: '#e2e8f0', fontWeight: 600 }}>Codictive 3.0 Hackathon Winner</div>
-                <div style={{ color: '#94a3b8' }}>1st Place State-Level (2025)</div>
-                <div style={{ color: '#a855f7' }}>Backend Developer - Urban Blooms</div>
+                <div style={{ color: '#64748b', fontSize: '0.72rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '0.35rem' }}>
+                  Top Achievement
+                </div>
+                <div style={{ color: '#e2e8f0', fontWeight: 600 }}>{ACHIEVEMENTS_DATA[0].title}</div>
+                <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>State-Level Hackathon &middot; Urban Blooms</div>
+                <div style={{ color: '#fbbf24', fontWeight: 600, marginTop: '0.2rem' }}>1st Place Winner</div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
+              <div style={{ color: '#64748b', fontSize: '0.72rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '0.5rem' }}>
+                Verified Core Skills
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                {['Java', 'Python', 'C++', 'C', 'Git', 'VS Code', 'Microsoft Azure'].map((tech) => (
+                  <span
+                    key={tech}
+                    className="tech-chip highlight"
+                    style={{ fontSize: '0.75rem', padding: '0.25rem 0.6rem' }}
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -155,15 +156,26 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
-              style={{ flex: 1 }}
+              style={{ flex: 1, justifyContent: 'center' }}
+            >
+              <ExternalLink size={16} />
+              <span>Open PDF in New Tab</span>
+            </a>
+
+            <a
+              href="/resume.pdf"
+              download="Sumit_Soni_Resume.pdf"
+              className="btn btn-secondary"
+              style={{ flex: 1, justifyContent: 'center' }}
             >
               <Download size={16} />
-              Open / Download resume.pdf
+              <span>Download PDF</span>
             </a>
 
             <button
               onClick={onClose}
               className="btn btn-secondary"
+              style={{ padding: '0.75rem 1.25rem' }}
             >
               Close
             </button>

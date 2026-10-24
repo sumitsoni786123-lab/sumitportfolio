@@ -1,13 +1,13 @@
 import React from 'react';
-import { ArrowUp, FileText, Send, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { ArrowUp, FileText, Send, ExternalLink, Mail, Github, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { LeetCodeIcon } from './LeetCodeIcon';
 
 interface FooterProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
+export const Footer: React.FC<FooterProps> = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -86,30 +86,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
 
             <div>
               <div style={{ fontSize: '0.75rem', color: '#cbd5e1', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '0.85rem' }}>
-                Profiles
+                Profiles &amp; Inquiries
               </div>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.825rem' }}>
-                <li>
-                  <a
-                    href={PERSONAL_INFO.leetcode}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: '#ffa116', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
-                  >
-                    <LeetCodeIcon size={14} color="#ffa116" />
-                    <span>LeetCode</span>
-                    <ExternalLink size={12} color="#64748b" />
-                  </a>
-                </li>
                 <li>
                   <a
                     href={PERSONAL_INFO.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: '#94a3b8', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
+                    style={{ color: '#cbd5e1', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
                   >
                     <Github size={14} />
-                    <span>GitHub</span>
+                    <span>GitHub (@sumitsoni786123-lab)</span>
                     <ExternalLink size={12} color="#64748b" />
                   </a>
                 </li>
@@ -121,8 +109,29 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                     style={{ color: '#38bdf8', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
                   >
                     <Linkedin size={14} />
-                    <span>LinkedIn</span>
+                    <span>LinkedIn (@sumitsoni786)</span>
                     <ExternalLink size={12} color="#64748b" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={PERSONAL_INFO.leetcode}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: '#ffa116', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
+                  >
+                    <LeetCodeIcon size={14} color="#ffa116" />
+                    <span>LeetCode (@sumitsoni786)</span>
+                    <ExternalLink size={12} color="#64748b" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`mailto:${PERSONAL_INFO.email}`}
+                    style={{ color: '#22d3ee', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
+                  >
+                    <Mail size={14} />
+                    <span>{PERSONAL_INFO.email}</span>
                   </a>
                 </li>
               </ul>
@@ -133,18 +142,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                 Actions
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                <button
-                  onClick={onOpenResume}
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-secondary btn-sm"
-                  style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', justifyContent: 'center' }}
                 >
                   <FileText size={14} color="#22d3ee" />
-                  View Resume
-                </button>
+                  View Resume (.pdf)
+                </a>
                 <a
                   href={`mailto:${PERSONAL_INFO.email}`}
                   className="btn btn-secondary btn-sm"
-                  style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', justifyContent: 'center' }}
                 >
                   <Send size={14} />
                   Email Sumit

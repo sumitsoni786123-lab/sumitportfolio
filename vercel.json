@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!resume\\.pdf|assets/|favicon\\.svg|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]

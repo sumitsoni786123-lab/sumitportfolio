@@ -276,7 +276,7 @@ export const Projects: React.FC = () => {
                             }}
                           >
                             <div style={{ fontSize: '0.75rem', color: '#22d3ee', fontWeight: 600, marginBottom: '0.25rem' }}>
-                              FastAPI Stream to React GIS Canvas
+                              FastAPI Stream to Geospatial GIS Canvas
                             </div>
                             <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
                               Normalized Difference Vegetation Index (NDVI) + Temporal Segmentations
@@ -308,7 +308,7 @@ export const Projects: React.FC = () => {
                           </div>
 
                           <div style={{ textAlign: 'center', color: '#64748b', fontSize: '0.75rem' }}>
-                            &darr; Evolution API Webhook Dispatcher
+                            &darr; WhatsApp Webhook Gateway Ingestion
                           </div>
 
                           <div
@@ -344,7 +344,7 @@ export const Projects: React.FC = () => {
                             }}
                           >
                             <div style={{ fontSize: '0.75rem', color: '#c084fc', fontWeight: 600, marginBottom: '0.25rem' }}>
-                              Supabase PostgreSQL State Machine
+                              Supabase Database State Machine
                             </div>
                             <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
                               Automated Dept Routing & Citizen WhatsApp Status Pings

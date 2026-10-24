@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, ExternalLink, Code2, CheckCircle2, ShieldCheck, Plus } from 'lucide-react';
+import { Terminal, ExternalLink, Code2, CheckCircle2, ShieldCheck, BookOpen } from 'lucide-react';
 import { CODING_PROFILES } from '../data/portfolioData';
 import { LeetCodeIcon } from './LeetCodeIcon';
 
@@ -11,13 +11,13 @@ export const CodingProfiles: React.FC = () => {
         <div style={{ marginBottom: '3rem' }}>
           <div className="section-tag">
             <Terminal size={14} />
-            <span>Developer Dashboard</span>
+            <span>Developer Practice</span>
           </div>
           <h2 className="section-title">
             Coding Profiles &amp; <span className="text-gradient-cyan">Problem Solving</span>.
           </h2>
           <p className="section-description">
-            Verified algorithmic profiles and coding handles focusing on core data structures, algorithms, and technical problem solving.
+            Verified algorithmic profiles and problem-solving practice focusing on core data structures, algorithms, and Java engineering fundamentals.
           </p>
         </div>
 
@@ -31,8 +31,6 @@ export const CodingProfiles: React.FC = () => {
           }}
         >
           {CODING_PROFILES.map((profile) => {
-            const isLeetCode = profile.iconType === 'leetcode';
-
             return (
               <div
                 key={profile.id}
@@ -44,8 +42,8 @@ export const CodingProfiles: React.FC = () => {
                   justifyContent: 'space-between',
                   gap: '1.5rem',
                   borderRadius: '16px',
-                  border: '1px solid rgba(255, 255, 255, 0.09)',
-                  background: 'linear-gradient(135deg, rgba(17, 24, 38, 0.95), rgba(13, 18, 28, 0.85))',
+                  border: '1px solid rgba(255, 161, 22, 0.25)',
+                  background: 'linear-gradient(135deg, rgba(20, 24, 34, 0.95), rgba(14, 18, 26, 0.85))',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -58,9 +56,7 @@ export const CodingProfiles: React.FC = () => {
                     right: 0,
                     width: '180px',
                     height: '180px',
-                    background: isLeetCode
-                      ? 'radial-gradient(circle, rgba(255, 161, 22, 0.08) 0%, transparent 70%)'
-                      : 'radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%)',
+                    background: 'radial-gradient(circle, rgba(255, 161, 22, 0.08) 0%, transparent 70%)',
                     pointerEvents: 'none',
                   }}
                 />
@@ -106,11 +102,11 @@ export const CodingProfiles: React.FC = () => {
                       style={{
                         fontFamily: 'var(--font-mono)',
                         fontSize: '0.7rem',
-                        color: '#64748b',
-                        background: 'rgba(255, 255, 255, 0.03)',
+                        color: '#ffa116',
+                        background: 'rgba(255, 161, 22, 0.08)',
                         padding: '0.2rem 0.5rem',
                         borderRadius: '4px',
-                        border: '1px solid rgba(255, 255, 255, 0.05)',
+                        border: '1px solid rgba(255, 161, 22, 0.2)',
                       }}
                     >
                       HOST: leetcode.com
@@ -134,7 +130,7 @@ export const CodingProfiles: React.FC = () => {
                         boxShadow: '0 4px 16px rgba(255, 161, 22, 0.12)',
                       }}
                     >
-                      {isLeetCode ? <LeetCodeIcon size={26} color="#ffa116" /> : <Code2 size={24} />}
+                      <LeetCodeIcon size={26} color="#ffa116" />
                     </div>
 
                     <div>
@@ -147,9 +143,9 @@ export const CodingProfiles: React.FC = () => {
                             style={{
                               fontFamily: 'var(--font-mono)',
                               fontSize: '0.7rem',
-                              color: '#22d3ee',
-                              background: 'rgba(34, 211, 238, 0.08)',
-                              border: '1px solid rgba(34, 211, 238, 0.25)',
+                              color: '#ffa116',
+                              background: 'rgba(255, 161, 22, 0.08)',
+                              border: '1px solid rgba(255, 161, 22, 0.25)',
                               padding: '0.15rem 0.5rem',
                               borderRadius: '9999px',
                             }}
@@ -163,7 +159,7 @@ export const CodingProfiles: React.FC = () => {
                         style={{
                           fontFamily: 'var(--font-mono)',
                           fontSize: '0.825rem',
-                          color: '#22d3ee',
+                          color: '#ffa116',
                           marginTop: '0.15rem',
                           display: 'flex',
                           alignItems: 'center',
@@ -194,12 +190,10 @@ export const CodingProfiles: React.FC = () => {
                       {profile.topics.map((topic) => (
                         <span
                           key={topic}
-                          className="tech-chip"
+                          className="tech-chip highlight"
                           style={{
                             fontSize: '0.72rem',
                             padding: '0.2rem 0.55rem',
-                            background: 'rgba(255, 255, 255, 0.03)',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
                           }}
                         >
                           {topic}
@@ -244,7 +238,7 @@ export const CodingProfiles: React.FC = () => {
             );
           })}
 
-          {/* Extensible Platform Slot Card */}
+          {/* Algorithmic Methodology & Problem-Solving Foundations Card */}
           <div
             className="glass-card card-hover-lift"
             style={{
@@ -254,8 +248,8 @@ export const CodingProfiles: React.FC = () => {
               justifyContent: 'space-between',
               gap: '1.5rem',
               borderRadius: '16px',
-              border: '1px dashed rgba(255, 255, 255, 0.12)',
-              background: 'rgba(15, 20, 29, 0.4)',
+              border: '1px solid rgba(34, 211, 238, 0.2)',
+              background: 'linear-gradient(135deg, rgba(16, 23, 36, 0.95), rgba(12, 17, 26, 0.85))',
             }}
           >
             <div>
@@ -266,15 +260,15 @@ export const CodingProfiles: React.FC = () => {
                   justifyContent: 'space-between',
                   marginBottom: '1.25rem',
                   paddingBottom: '0.85rem',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#94a3b8', fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#22d3ee', fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>
                   <Code2 size={13} color="#22d3ee" />
-                  <span>EXTENSIBLE DASHBOARD</span>
+                  <span>CORE COMPETENCIES</span>
                 </div>
                 <span style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
-                  READY FOR EXPANSION
+                  JAVA FOUNDATION
                 </span>
               </div>
 
@@ -284,8 +278,8 @@ export const CodingProfiles: React.FC = () => {
                     width: '3.25rem',
                     height: '3.25rem',
                     borderRadius: '12px',
-                    background: 'rgba(34, 211, 238, 0.05)',
-                    border: '1px dashed rgba(34, 211, 238, 0.25)',
+                    background: 'rgba(34, 211, 238, 0.08)',
+                    border: '1px solid rgba(34, 211, 238, 0.25)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -293,32 +287,32 @@ export const CodingProfiles: React.FC = () => {
                     flexShrink: 0,
                   }}
                 >
-                  <Plus size={22} />
+                  <BookOpen size={22} />
                 </div>
                 <div>
                   <h3 style={{ fontSize: '1.15rem', color: '#e2e8f0', fontWeight: 600 }}>
-                    Additional Handles
+                    Algorithmic Foundations
                   </h3>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
-                    Competitive &amp; Practice Platforms
+                  <div style={{ fontSize: '0.75rem', color: '#22d3ee', fontFamily: 'var(--font-mono)' }}>
+                    Data Structures &amp; OOP in Java
                   </div>
                 </div>
               </div>
 
               <p style={{ fontSize: '0.875rem', color: '#94a3b8', lineHeight: 1.6, marginBottom: '1rem' }}>
-                Engineered to seamlessly link future competitive coding profiles (e.g. CodeChef, Codeforces, HackerRank, GeeksforGeeks) via centralized configuration.
+                Dedicated focus on algorithmic complexity, optimal space/time bounds, clean object-oriented class structure, and edge-case handling across competitive coding problems.
               </p>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                {['Java DSA', 'Algorithmic Rounds', 'Competitive Contests'].map((tag) => (
+                {['Java Collections Framework', 'Two Pointers & Sliding Window', 'Recursion & Dynamic Memory', 'Binary Search & Trees', 'Time & Space Analysis'].map((tag) => (
                   <span
                     key={tag}
                     style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.7rem',
-                      color: '#64748b',
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      color: '#cbd5e1',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       padding: '0.2rem 0.5rem',
                       borderRadius: '4px',
                     }}
@@ -339,17 +333,17 @@ export const CodingProfiles: React.FC = () => {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: '#64748b' }}>
-                <CheckCircle2 size={14} color="#22d3ee" />
-                <span>Extensible Architecture</span>
+                <CheckCircle2 size={14} color="#10b981" />
+                <span>Continuous Practice</span>
               </div>
               <span
                 style={{
                   fontSize: '0.75rem',
                   fontFamily: 'var(--font-mono)',
-                  color: '#94a3b8',
+                  color: '#22d3ee',
                 }}
               >
-                Config-Driven
+                Active
               </span>
             </div>
           </div>

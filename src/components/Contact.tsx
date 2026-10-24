@@ -1,38 +1,15 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Copy, Check, Send, FileText, ExternalLink, Sparkles, Github, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { LeetCodeIcon } from './LeetCodeIcon';
 
 export const Contact: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleCopyEmail = () => {
+  const copyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formState.name || !formState.email || !formState.message) return;
-
-    // Compose mailto URI
-    const subject = encodeURIComponent(formState.subject || `Inquiry from ${formState.name} via Portfolio`);
-    const body = encodeURIComponent(
-      `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`
-    );
-    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
-
-    // Open mail client
-    window.location.href = mailtoUrl;
-    setSubmitted(true);
   };
 
   return (
@@ -42,361 +19,487 @@ export const Contact: React.FC = () => {
         <div style={{ marginBottom: '3rem' }}>
           <div className="section-tag">
             <Mail size={14} />
-            <span>Get in Touch</span>
+            <span>Direct Inquiries</span>
           </div>
           <h2 className="section-title">
-            Let's build something <span className="text-gradient-cyan">impactful</span> together.
+            Let's connect &amp; <span className="text-gradient-cyan">discuss engineering</span>.
           </h2>
           <p className="section-description">
-            Whether you want to discuss backend engineering, satellite retrieval pipelines, LLM systems, or job opportunities, feel free to reach out.
+            Looking for a dedicated software engineer with strong foundations in Java, Python, and applied systems? Feel free to reach out directly via email.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: '2.5rem', alignItems: 'stretch' }} className="contact-grid">
-          {/* Left Column: Direct Info & Social Placeholders */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {/* Email Card */}
+        {/* Contact Layout Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.25fr 0.85fr',
+            gap: '2rem',
+            alignItems: 'stretch',
+          }}
+          className="contact-layout-grid"
+        >
+          {/* Main Email & Inquiries Card */}
+          <div
+            className="glass-card"
+            style={{
+              padding: '2.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              gap: '2rem',
+              border: '1px solid rgba(34, 211, 238, 0.25)',
+              background: 'linear-gradient(135deg, rgba(17, 24, 38, 0.95), rgba(12, 17, 26, 0.9))',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(34, 211, 238, 0.08)',
+              borderRadius: '20px',
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+          >
+            {/* Ambient Background Glow */}
             <div
-              className="glass-card"
               style={{
-                padding: '2rem',
-                border: '1px solid rgba(34, 211, 238, 0.25)',
-                background: 'linear-gradient(135deg, rgba(15, 20, 29, 0.95), rgba(10, 16, 26, 0.8))',
+                position: 'absolute',
+                top: '-40px',
+                right: '-40px',
+                width: '220px',
+                height: '220px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(34, 211, 238, 0.12) 0%, transparent 70%)',
+                pointerEvents: 'none',
               }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            />
+
+            <div>
+              {/* Status Header */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  marginBottom: '1.25rem',
+                }}
+              >
+                <span
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    background: '#10b981',
+                    boxShadow: '0 0 10px #10b981',
+                    display: 'inline-block',
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.75rem',
+                    color: '#34d399',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    fontWeight: 600,
+                  }}
+                >
+                  Available for Opportunities &middot; Prompt Response
+                </span>
+              </div>
+
+              <h3 style={{ fontSize: '1.65rem', color: '#f8fafc', marginBottom: '0.75rem', fontWeight: 700 }}>
+                Start a Conversation
+              </h3>
+              <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+                Whether you have an inquiry regarding internships, entry-level software engineering roles, or want to review my technical projects, my inbox is always open.
+              </p>
+
+              {/* Email Me Primary Action Box */}
+              <div
+                style={{
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '14px',
+                  padding: '1.5rem',
+                  marginBottom: '1.5rem',
+                }}
+              >
+                <div style={{ fontSize: '0.75rem', color: '#64748b', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                  Direct Email Address
+                </div>
                 <div
                   style={{
-                    width: '2.5rem',
-                    height: '2.5rem',
-                    borderRadius: '10px',
-                    background: 'rgba(34, 211, 238, 0.1)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '1.15rem',
+                    color: '#22d3ee',
+                    fontWeight: 600,
+                    marginBottom: '1.25rem',
+                    wordBreak: 'break-all',
+                  }}
+                >
+                  {PERSONAL_INFO.email}
+                </div>
+
+                <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
+                  {/* Clean Mailto Button */}
+                  <a
+                    href={`mailto:${PERSONAL_INFO.email}`}
+                    className="btn btn-primary"
+                    style={{
+                      padding: '0.85rem 1.6rem',
+                      fontSize: '0.95rem',
+                      fontWeight: 600,
+                      gap: '0.6rem',
+                    }}
+                  >
+                    <Send size={16} />
+                    <span>Email Me</span>
+                  </a>
+
+                  {/* Copy Button */}
+                  <button
+                    onClick={copyEmail}
+                    className="btn btn-secondary"
+                    style={{
+                      padding: '0.85rem 1.4rem',
+                      fontSize: '0.875rem',
+                      fontFamily: 'var(--font-mono)',
+                      gap: '0.5rem',
+                    }}
+                  >
+                    {copied ? <Check size={16} color="#10b981" /> : <Copy size={16} />}
+                    <span>{copied ? 'Copied to Clipboard' : 'Copy Email'}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Contact Specs */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '1rem',
+                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                paddingTop: '1.5rem',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div
+                  style={{
+                    width: '2.25rem',
+                    height: '2.25rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#22d3ee',
                   }}
                 >
-                  <Mail size={20} />
+                  <Phone size={15} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
-                    Direct Email
-                  </div>
-                  <div style={{ fontSize: '1.05rem', fontWeight: 600, color: '#f1f5f9' }}>
-                    {PERSONAL_INFO.email}
+                  <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>Phone</div>
+                  <a
+                    href={`tel:${PERSONAL_INFO.phone}`}
+                    style={{ fontSize: '0.85rem', color: '#cbd5e1', textDecoration: 'none', fontFamily: 'var(--font-mono)' }}
+                  >
+                    {PERSONAL_INFO.phone}
+                  </a>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div
+                  style={{
+                    width: '2.25rem',
+                    height: '2.25rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#a855f7',
+                  }}
+                >
+                  <MapPin size={15} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>Location</div>
+                  <div style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>{PERSONAL_INFO.location}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Side Cards: Verified Profiles & Resume Access */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {/* Resume Fast Link Card */}
+            <div
+              className="glass-card card-hover-lift"
+              style={{
+                padding: '1.75rem',
+                borderRadius: '18px',
+                border: '1px solid rgba(255, 255, 255, 0.09)',
+                background: 'linear-gradient(135deg, rgba(19, 26, 40, 0.85), rgba(14, 19, 30, 0.75))',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <div
+                  style={{
+                    width: '2.25rem',
+                    height: '2.25rem',
+                    borderRadius: '8px',
+                    background: 'rgba(34, 211, 238, 0.1)',
+                    border: '1px solid rgba(34, 211, 238, 0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#22d3ee',
+                  }}
+                >
+                  <FileText size={16} />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '1.05rem', color: '#f8fafc', fontWeight: 600 }}>
+                    Official Resume
+                  </h4>
+                  <div style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
+                    PDF FORMAT &middot; UPDATED 2026
                   </div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <p style={{ fontSize: '0.875rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                Directly access my verified curriculum vitae covering academic coursework, engineering projects, hackathon achievements, and certifications.
+              </p>
+
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
                 <a
-                  href={`mailto:${PERSONAL_INFO.email}`}
-                  className="btn btn-primary btn-sm"
-                  style={{ flex: 1 }}
-                >
-                  <Send size={14} />
-                  Send Email
-                </a>
-                <button
-                  onClick={handleCopyEmail}
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-secondary btn-sm"
-                  style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+                  style={{
+                    flex: 1,
+                    padding: '0.65rem 1rem',
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    justifyContent: 'center',
+                  }}
                 >
-                  {copied ? <Check size={14} color="#10b981" /> : <Copy size={14} />}
-                  <span>{copied ? 'Copied!' : 'Copy'}</span>
-                </button>
+                  <ExternalLink size={14} color="#22d3ee" />
+                  <span>Open PDF</span>
+                </a>
+
+                <a
+                  href="/resume.pdf"
+                  download="Sumit_Soni_Resume.pdf"
+                  className="btn btn-primary btn-sm"
+                  style={{
+                    flex: 1,
+                    padding: '0.65rem 1rem',
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <FileText size={14} />
+                  <span>Download</span>
+                </a>
               </div>
             </div>
 
-            {/* Social & Professional Profile Placeholders */}
+            {/* Verified Coding Handle Card */}
             <div
-              className="glass-card"
+              className="glass-card card-hover-lift"
               style={{
-                padding: '2rem',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                padding: '1.75rem',
+                borderRadius: '18px',
+                border: '1px solid rgba(255, 161, 22, 0.25)',
+                background: 'linear-gradient(135deg, rgba(20, 24, 34, 0.85), rgba(15, 19, 27, 0.75))',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.25rem',
+                gap: '1rem',
               }}
             >
-              <div style={{ fontSize: '0.85rem', color: '#94a3b8', fontWeight: 500 }}>
-                Professional Networks & Profiles
-              </div>
-
-              {/* LeetCode */}
-              <a
-                href={PERSONAL_INFO.leetcode}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.9rem 1.2rem',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.07)',
-                  textDecoration: 'none',
-                  color: '#f1f5f9',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 161, 22, 0.4)';
-                  e.currentTarget.style.background = 'rgba(255, 161, 22, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.07)';
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                   <div
                     style={{
-                      width: '2rem',
-                      height: '2rem',
+                      width: '2.25rem',
+                      height: '2.25rem',
                       borderRadius: '8px',
-                      background: 'rgba(255, 161, 22, 0.1)',
-                      border: '1px solid rgba(255, 161, 22, 0.25)',
+                      background: 'rgba(255, 161, 22, 0.12)',
+                      border: '1px solid rgba(255, 161, 22, 0.3)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#ffa116',
                     }}
                   >
                     <LeetCodeIcon size={18} color="#ffa116" />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>LeetCode Profile</div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
-                      leetcode.com/u/sumitsoni786
+                    <h4 style={{ fontSize: '1.05rem', color: '#f8fafc', fontWeight: 600 }}>
+                      LeetCode Profile
+                    </h4>
+                    <div style={{ fontSize: '0.72rem', color: '#ffa116', fontFamily: 'var(--font-mono)' }}>
+                      @sumitsoni786
                     </div>
                   </div>
                 </div>
-                <ExternalLink size={16} color="#64748b" />
-              </a>
 
-              {/* GitHub */}
+                <span
+                  style={{
+                    fontSize: '0.68rem',
+                    fontFamily: 'var(--font-mono)',
+                    color: '#10b981',
+                    background: 'rgba(16, 185, 129, 0.1)',
+                    border: '1px solid rgba(16, 185, 129, 0.25)',
+                    padding: '0.2rem 0.5rem',
+                    borderRadius: '9999px',
+                  }}
+                >
+                  VERIFIED
+                </span>
+              </div>
+
+              <p style={{ fontSize: '0.875rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                Explore my verified coding activity and algorithmic problem-solving practice in Java.
+              </p>
+
               <a
-                href={PERSONAL_INFO.github}
+                href={PERSONAL_INFO.leetcode}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="btn btn-secondary btn-sm"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.9rem 1.2rem',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.07)',
-                  textDecoration: 'none',
-                  color: '#f1f5f9',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.4)';
-                  e.currentTarget.style.background = 'rgba(34, 211, 238, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.07)';
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                  padding: '0.65rem 1rem',
+                  fontSize: '0.8rem',
+                  fontFamily: 'var(--font-mono)',
+                  color: '#ffa116',
+                  borderColor: 'rgba(255, 161, 22, 0.3)',
+                  justifyContent: 'center',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <Github size={20} color="#cbd5e1" />
-                  <div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>GitHub Profile</div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
-                      github.com (Add handle in portfolioData.ts)
-                    </div>
-                  </div>
-                </div>
-                <ExternalLink size={16} color="#64748b" />
-              </a>
-
-              {/* LinkedIn */}
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.9rem 1.2rem',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.07)',
-                  textDecoration: 'none',
-                  color: '#f1f5f9',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.4)';
-                  e.currentTarget.style.background = 'rgba(168, 85, 247, 0.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.07)';
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <Linkedin size={20} color="#0ea5e9" />
-                  <div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>LinkedIn Profile</div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
-                      linkedin.com/in (Add handle in portfolioData.ts)
-                    </div>
-                  </div>
-                </div>
-                <ExternalLink size={16} color="#64748b" />
+                <span>View LeetCode Profile</span>
+                <ExternalLink size={14} />
               </a>
             </div>
-          </div>
 
-          {/* Right Column: Functional Message Form */}
-          <div
-            className="glass-card"
-            style={{
-              padding: '2.5rem',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.25rem', color: '#f8fafc', marginBottom: '0.5rem' }}>
-              Send a Direct Message
-            </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginBottom: '1.5rem' }}>
-              Fill in your message below. Clicking send will open your default email client with the details pre-filled.
-            </p>
-
-            {submitted && (
-              <div
-                style={{
-                  background: 'rgba(16, 185, 129, 0.1)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  borderRadius: '8px',
-                  padding: '1rem',
-                  marginBottom: '1.5rem',
-                  color: '#34d399',
-                  fontSize: '0.85rem',
-                }}
-              >
-                Email composer launched! If your mail client didn't open automatically, write directly to <strong>{PERSONAL_INFO.email}</strong>.
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }} className="form-row">
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
-                    YOUR NAME
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Alex Morgan"
-                    value={formState.name}
-                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      background: 'rgba(0, 0, 0, 0.25)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '8px',
-                      color: '#f8fafc',
-                      fontSize: '0.9rem',
-                      outline: 'none',
-                    }}
-                  />
+            {/* GitHub & LinkedIn Profiles Card */}
+            <div
+              className="glass-card card-hover-lift"
+              style={{
+                padding: '1.75rem',
+                borderRadius: '18px',
+                border: '1px solid rgba(255, 255, 255, 0.09)',
+                background: 'linear-gradient(135deg, rgba(19, 26, 40, 0.85), rgba(14, 19, 30, 0.75))',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <div
+                  style={{
+                    width: '2.25rem',
+                    height: '2.25rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#f8fafc',
+                  }}
+                >
+                  <Github size={16} />
                 </div>
-
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
-                    YOUR EMAIL
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="alex@company.com"
-                    value={formState.email}
-                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      background: 'rgba(0, 0, 0, 0.25)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '8px',
-                      color: '#f8fafc',
-                      fontSize: '0.9rem',
-                      outline: 'none',
-                    }}
-                  />
+                  <h4 style={{ fontSize: '1.05rem', color: '#f8fafc', fontWeight: 600 }}>
+                    Developer &amp; Professional Links
+                  </h4>
+                  <div style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
+                    GITHUB &middot; LINKEDIN
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
-                  SUBJECT
-                </label>
-                <input
-                  type="text"
-                  placeholder="Software Engineering Collaboration / Inquiry"
-                  value={formState.subject}
-                  onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    background: 'rgba(0, 0, 0, 0.25)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '8px',
-                    color: '#f8fafc',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                  }}
-                />
-              </div>
+              <p style={{ fontSize: '0.875rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                Explore open-source repositories and codebase history on GitHub, or connect directly on LinkedIn.
+              </p>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
-                  MESSAGE
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  placeholder="Describe your project, team opportunity, or inquiry..."
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <a
+                  href={PERSONAL_INFO.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
                   style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    background: 'rgba(0, 0, 0, 0.25)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '8px',
-                    color: '#f8fafc',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                    resize: 'vertical',
+                    flex: 1,
+                    padding: '0.65rem 1rem',
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    justifyContent: 'center',
+                    gap: '0.45rem',
                   }}
-                />
-              </div>
+                >
+                  <Github size={14} />
+                  <span>GitHub</span>
+                  <ExternalLink size={12} color="#64748b" />
+                </a>
 
-              <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
-                <Send size={16} />
-                Send Inquiry
-              </button>
-            </form>
+                <a
+                  href={PERSONAL_INFO.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                  style={{
+                    flex: 1,
+                    padding: '0.65rem 1rem',
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    borderColor: 'rgba(14, 165, 233, 0.3)',
+                    color: '#38bdf8',
+                    justifyContent: 'center',
+                    gap: '0.45rem',
+                  }}
+                >
+                  <Linkedin size={14} color="#38bdf8" />
+                  <span>LinkedIn</span>
+                  <ExternalLink size={12} color="#64748b" />
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Note Card */}
+            <div
+              style={{
+                padding: '1.25rem 1.5rem',
+                borderRadius: '14px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px dashed rgba(255, 255, 255, 0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+              }}
+            >
+              <Sparkles size={18} color="#22d3ee" style={{ flexShrink: 0 }} />
+              <div style={{ fontSize: '0.8rem', color: '#94a3b8', lineHeight: 1.5 }}>
+                Direct email communication with zero third-party intermediaries. All messages delivered straight to Sumit Soni.
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 900px) {
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        @media (max-width: 600px) {
-          .form-row {
+          .contact-layout-grid {
             grid-template-columns: 1fr !important;
           }
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Database, Server, Compass, CheckCircle2 } from 'lucide-react';
+import { User, Database, Server, Compass, CheckCircle2, Github, Linkedin, ExternalLink } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const About: React.FC = () => {
@@ -39,9 +39,35 @@ export const About: React.FC = () => {
               <p style={{ color: '#94a3b8', fontSize: '0.975rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>
                 I am a Computer Science Engineering undergraduate at <strong style={{ color: '#f1f5f9' }}>{PERSONAL_INFO.college}</strong> (Batch of {PERSONAL_INFO.graduationPeriod}) maintaining a CGPA of <strong style={{ color: '#22d3ee' }}>{PERSONAL_INFO.cgpa}</strong>.
               </p>
-              <p style={{ color: '#94a3b8', fontSize: '0.975rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+              <p style={{ color: '#94a3b8', fontSize: '0.975rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>
                 My engineering approach is centered on real-world utility: understanding what happens behind high-level abstractions—from Java object-oriented design and data structures to Python vector spaces in remote sensing imagery and asynchronous webhooks in civic communications. I prefer writing maintainable, well-structured code over superficial layers.
               </p>
+
+              {/* Profiles Row */}
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                <a
+                  href={PERSONAL_INFO.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', gap: '0.45rem' }}
+                >
+                  <Github size={15} />
+                  <span>GitHub Profile</span>
+                  <ExternalLink size={12} color="#64748b" />
+                </a>
+                <a
+                  href={PERSONAL_INFO.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', gap: '0.45rem', borderColor: 'rgba(14, 165, 233, 0.3)' }}
+                >
+                  <Linkedin size={15} color="#38bdf8" />
+                  <span style={{ color: '#38bdf8' }}>LinkedIn Profile</span>
+                  <ExternalLink size={12} color="#64748b" />
+                </a>
+              </div>
             </div>
 
             {/* Quick Principles List */}
@@ -114,7 +140,7 @@ export const About: React.FC = () => {
                 <h4 style={{ fontSize: '1.05rem', color: '#f8fafc' }}>Asynchronous Backend & Systems</h4>
               </div>
               <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: 1.6 }}>
-                Architecting robust backend services with Java and object-oriented principles, complemented by Python FastAPI and Flask. Structuring high-concurrency webhook ingestion pipelines, rate-limiting, and relational PostgreSQL databases.
+                Architecting robust backend services with Java and object-oriented principles, complemented by Python and FastAPI. Structuring reliable webhook ingestion pipelines, sensor telemetry, and relational database integrations.
               </p>
             </div>
 
